@@ -23,7 +23,8 @@ class ProductController extends Controller
 
         // valideer request
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:products|max:255',
+            'name' => 'required|unique:products|max:64',
+            'description' => 'required|max:255',
         ]);
  
         // Wanneer de validatie faalt return een message
@@ -35,7 +36,7 @@ class ProductController extends Controller
         // haal de gevalideerde data op
         $validated = $validator->validated();
 
-        DB::insert("INSERT INTO products (name) VALUES ('".$validated['name']."')");
+        DB::insert("INSERT INTO products (name, description) VALUES ('".$validated['name']."','".$validated['description']."')");
 
         return redirect('/products')->with('status', 'Product saved');
     }
