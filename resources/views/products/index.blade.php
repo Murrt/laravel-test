@@ -11,6 +11,10 @@
                 color: green;
             }
 
+            .alert-danger {
+                color: red;
+            }
+
         </style>
     </head>
     <body>
@@ -39,6 +43,12 @@
         @if (session('status'))
         <div class="alert-success">
             {{ session('status') }}
+        </div>
+        @endif
+
+        @if (session('statusBad'))
+        <div class="alert-danger">
+            {{ session('statusBad') }}
         </div>
         @endif
 
