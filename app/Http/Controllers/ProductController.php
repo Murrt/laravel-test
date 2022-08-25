@@ -18,13 +18,15 @@ class ProductController extends Controller
         return view('products.index');
     }
 
-    public function new(Request $request, ProductService $ProductServiceProvider){
+    public function new(Request $request, ProductService $ProductServiceProvider)
+    {
         $ProductServiceProvider->new($request);
-        
+        return redirect('/products');
     }
 
-    public function delete(Request $request, ProductService $ProductServiceProvider){
+    public function delete(Request $request, ProductService $ProductServiceProvider)
+    {
         $ProductServiceProvider->delete($request);
+        return redirect('/products');
     }
-
 }
