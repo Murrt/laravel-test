@@ -8,5 +8,13 @@
     </head>
     <body>
         <a href="/products">Manage products</a>
+
+        
+        @if (session('EventStatus'))
+        <div class="alert-success">
+            {{ session('EventStatus') }}
+        </div>
+        @endif
+
     </body>
 </html>

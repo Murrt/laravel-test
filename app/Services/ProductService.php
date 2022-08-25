@@ -37,7 +37,7 @@ class ProductService
         DB::insert("INSERT INTO products (name, description) VALUES ('" . $validated['name'] . "','" . $validated['description'] . "')");
 
         $this->TagCheck($validated['tags'], $validated['name']);
-
+        
         return redirect('/products')->with('status', 'Product saved');
     }
 
@@ -45,7 +45,7 @@ class ProductService
     {
 
         // valideer request
-        $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [ 
             'id' => 'integer',
         ]);
 

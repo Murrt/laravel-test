@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ProductCreated;
 use App\Product;
 use App\User;
 use Illuminate\Auth\Events\Validated;
@@ -21,6 +22,8 @@ class ProductController extends Controller
     public function new(Request $request, ProductService $ProductServiceProvider)
     {
         $ProductServiceProvider->new($request);
+        event(new ProductCreated('test'));
+        
         return redirect('/products');
     }
 
@@ -29,4 +32,6 @@ class ProductController extends Controller
         $ProductServiceProvider->delete($request);
         return redirect('/products');
     }
+
+
 }
